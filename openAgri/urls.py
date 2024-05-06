@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from core import views
+from core.views import DeviceList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('devices/', DeviceList.as_view(), name="devices_list"),
+    path("devices/<int:pk>/", views.get_by_id, name="device_detail")
 ]
